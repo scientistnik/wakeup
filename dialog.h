@@ -24,6 +24,8 @@ private slots:
 
     void on_add_button_clicked();
 
+    void on_hide_button_clicked();
+
 private:
     Ui::Dialog *ui;
     QSystemTrayIcon *trayIcon;

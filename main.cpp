@@ -2,14 +2,15 @@
 
 #ifndef QT_NO_SYSTEMTRAYICON
 
-#include <QMessageBox>
-#include "dialog.h"
+#include <QLabel>
+//#include "dialog.h"
 
 int main(int argc, char *argv[])
 {
-    Q_INIT_RESOURCE(systray);
+    //Q_INIT_RESOURCE(systray);
 
     QApplication a(argc, argv);
+    /*
     if (!QSystemTrayIcon::isSystemTrayAvailable()) {
         QMessageBox::critical(0, QObject::tr("Systray"),
                               QObject::tr("I couldn't detect any system tray "
@@ -20,6 +21,18 @@ int main(int argc, char *argv[])
 
     Dialog w;
     //w.show();
+    */
+
+    QLabel label(argv[1]);
+    label.setWordWrap(true);
+    label.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+
+    QFont font;// = label.font();
+    font.setPointSize(72);
+    font.setBold(true);
+    label.setFont(font);
+
+    label.showFullScreen();
 
     return a.exec();
 }

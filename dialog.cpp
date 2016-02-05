@@ -24,6 +24,15 @@ Dialog::Dialog(QWidget *parent) :
     trayIcon->showMessage(QTime::currentTime().toString(),"Time over!");
 
     time = new QTime();
+
+    //ui->tableView->setVerticalHeader("Hello");
+    //ui->tableView->setRowCount(10);
+    //ui->tableView->setColumnCount(3);
+    //ui->tableView->set
+    const int WDGT_WIDTH = 271;
+    ui->tableWidget->setColumnWidth(0,WDGT_WIDTH/3);
+    ui->tableWidget->setColumnWidth(1,WDGT_WIDTH/3);
+    ui->tableWidget->setColumnWidth(2,WDGT_WIDTH/3);
 }
 
 Dialog::~Dialog()
@@ -53,7 +62,7 @@ void Dialog::iconActivated(QSystemTrayIcon::ActivationReason act)
 void Dialog::on_add_button_clicked()
 {
     *time = ui->timeEdit->time();
-    int left_time = QTime::currentTime().msecsTo(*time)+1;
+    int left_time = QTime::currentTime().msecsTo(*time)+1000;
     QTimer::singleShot(left_time,this,SLOT(time_left()));
     qDebug() << left_time/1000;
 }
@@ -61,4 +70,9 @@ void Dialog::on_add_button_clicked()
 void Dialog::time_left()
 {
      trayIcon->showMessage(QTime::currentTime().toString(),"Time over!");
+}
+
+void Dialog::on_hide_button_clicked()
+{
+    hide();
 }
