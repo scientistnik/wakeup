@@ -16,6 +16,6 @@ then
 		time_now=`date '+%T'`
 	done
 
-	full_screen_message $2
+	full_screen_message "$2"
 fi
 
